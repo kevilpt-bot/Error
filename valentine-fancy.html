@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Nima 💝</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #D4145A;
+            --secondary: #FBB03B;
+            --accent: #FF6B9D;
+            --dark: #1a0e1a;
+            --light: #FFF5F7;
+            --gold: #FFD700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #1a0e1a 0%, #3d1f3d 50%, #1a0e1a 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: var(--light);
+            position: relative;
+        }
+
+        /* Animated Background Hearts */
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0.15;
+            animation: float-up 15s infinite ease-in-out;
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.15;
+            }
+            90% {
+                opacity: 0.15;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Main Container */
+        .container {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 40px;
+            padding: 80px 60px;
+            max-width: 700px;
+            width: 100%;
+            box-shadow: 
+                0 8px 32px rgba(212, 20, 90, 0.2),
+                0 0 100px rgba(255, 215, 0, 0.1),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+            position: relative;
+            animation: cardEntrance 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes cardEntrance {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent), var(--gold));
+            border-radius: 40px;
+            z-index: -1;
+            opacity: 0.5;
+            filter: blur(20px);
+            animation: borderGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        /* Typography */
+        .greeting {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.3s forwards;
+            color: var(--secondary);
+            letter-spacing: 2px;
+        }
+
+        .main-question {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 50%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.6s forwards;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-bottom: 50px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.9s forwards;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+        }
+
+        /* Decorative Hearts */
+        .heart-icon {
+            font-size: 5rem;
+            text-align: center;
+            margin-bottom: 30px;
+            animation: heartPulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(255, 107, 157, 0.6));
+        }
+
+        @keyframes heartPulse {
+            0%, 100% { 
+                transform: scale(1);
+            }
+            50% { 
+                transform: scale(1.15);
+            }
+        }
+
+        /* Buttons Container */
+        .buttons-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 60px;
+            position: relative;
+            min-height: 150px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 1.2s forwards;
+        }
+
+        /* YES Button */
+        .btn-yes {
+            padding: 25px 60px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 
+                0 10px 40px rgba(212, 20, 90, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
+            letter-spacing: 1px;
+        }
+
+        .btn-yes::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-yes:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 
+                0 20px 60px rgba(212, 20, 90, 0.6),
+                0 0 0 2px var(--gold);
+        }
+
+        .btn-yes:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-yes:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        /* NO Button */
+        .btn-no {
+            padding: 25px 60px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            cursor: pointer;
+            position: absolute;
+            transition: all 0.2s ease;
+            letter-spacing: 1px;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-no:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Question Section */
+        #question-section {
+            transition: opacity 0.5s ease;
+        }
+
+        #question-section.hidden {
+            display: none;
+        }
+
+        /* Celebration Section */
+        #celebration-section {
+            display: none;
+            text-align: center;
+            animation: celebrationEntrance 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        #celebration-section.show {
+            display: block;
+        }
+
+        @keyframes celebrationEntrance {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) rotate(-10deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0);
+            }
+        }
+
+        .celebration-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--secondary) 50%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+
+        .celebration-message {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+        }
+
+        .photo-container {
+            margin: 50px auto;
+            max-width: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 0 5px rgba(255, 215, 0, 0.3);
+            animation: photoReveal 1s ease-out 0.5s both;
+            position: relative;
+        }
+
+        @keyframes photoReveal {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) rotateY(90deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotateY(0);
+            }
+        }
+
+        .photo-container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--gold), var(--accent), var(--primary), var(--secondary));
+            border-radius: 20px;
+            z-index: -1;
+            animation: borderRotate 4s linear infinite;
+        }
+
+        @keyframes borderRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 20px;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(212, 20, 90, 0.3) 0%, rgba(255, 215, 0, 0.3) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+        }
+
+        .final-message {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-top: 40px;
+            color: var(--secondary);
+            font-weight: 300;
+            animation: fadeIn 1s ease-out 1s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Confetti */
+        .confetti-piece {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: var(--primary);
+            top: -10px;
+            z-index: 9999;
+            animation: confettiFall 3s linear forwards;
+        }
+
+        @keyframes confettiFall {
+            to {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Sparkles */
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            animation: sparkleFloat 2s ease-out forwards;
+            z-index: 9999;
+        }
+
+        @keyframes sparkleFloat {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(0);
+            }
+            50% {
+                transform: translateY(-50px) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) scale(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .card {
+                padding: 60px 30px;
+            }
+
+            .main-question {
+                font-size: 2.5rem;
+            }
+
+            .greeting {
+                font-size: 1.5rem;
+            }
+
+            .buttons-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .btn-yes, .btn-no {
+                padding: 20px 50px;
+                font-size: 1.3rem;
+            }
+
+            .btn-no {
+                position: relative !important;
+                left: 0 !important;
+                top: 0 !important;
+            }
+
+            .celebration-title {
+                font-size: 3rem;
+            }
+
+            .celebration-message {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Loading animation */
+        .loading {
+            opacity: 0;
+            animation: fadeInPage 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInPage {
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="loading">
+    <!-- Floating Hearts Background -->
+    <div class="hearts-bg" id="heartsBackground"></div>
+
+    <div class="container">
+        <div class="card">
+            <!-- Question Section -->
+            <div id="question-section">
+                <div class="heart-icon">💖</div>
+                <div class="greeting">Dear Nima,</div>
+                <h1 class="main-question">Will You Be My Valentine?</h1>
+                <p class="subtitle">You make my world infinitely brighter ✨</p>
+
+                <div class="buttons-container">
+                    <button class="btn-yes" onclick="handleYes()">
+                        Yes! 💕
+                    </button>
+                    <button class="btn-no" id="noBtn" onmouseover="moveNoButton()" onclick="moveNoButton()">
+                        No
+                    </button>
+                </div>
+            </div>
+
+            <!-- Celebration Section -->
+            <div id="celebration-section">
+                <div class="heart-icon">❤️</div>
+                <h2 class="celebration-title">You Said Yes! 🎉</h2>
+                <p class="celebration-message">
+                    You just made me the happiest person in the entire universe!<br>
+                    I can't wait to celebrate this special day with you.
+                </p>
+
+                <div class="photo-container">
+                    <!-- Replace this with your photo -->
+                    <img src="our-photo.jpg" alt="Our Special Moment" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'>📸 Upload our photo here!<br><small>Replace \'our-photo.jpg\'</small></div>'">
+                </div>
+
+                <p class="final-message">
+                    Forever grateful to have you in my life, Nima 💝
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create floating hearts background
+        function createFloatingHearts() {
+            const heartsContainer = document.getElementById('heartsBackground');
+            const heartSymbols = ['💕', '💖', '💗', '💝', '💓', '💞'];
+            
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heart.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                heartsContainer.appendChild(heart);
+            }
+        }
+
+        // Move NO button away from cursor
+        function moveNoButton() {
+            const noBtn = document.getElementById('noBtn');
+            const container = document.querySelector('.buttons-container');
+            const containerRect = container.getBoundingClientRect();
+            
+            // Get random position
+            const maxX = containerRect.width - 200;
+            const maxY = 100;
+            
+            const randomX = Math.floor(Math.random() * maxX) - maxX / 2;
+            const randomY = Math.floor(Math.random() * maxY) - maxY / 2;
+            
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+            
+            // Add a playful rotation
+            noBtn.style.transform = `rotate(${Math.random() * 20 - 10}deg)`;
+        }
+
+        // Handle YES button click
+        function handleYes() {
+            // Hide question section
+            const questionSection = document.getElementById('question-section');
+            const celebrationSection = document.getElementById('celebration-section');
+            
+            questionSection.classList.add('hidden');
+            celebrationSection.classList.add('show');
+            
+            // Create confetti
+            createConfetti();
+            
+            // Create sparkles around the card
+            createSparkles();
+        }
+
+        // Create confetti explosion
+        function createConfetti() {
+            const colors = ['#D4145A', '#FBB03B', '#FF6B9D', '#FFD700', '#FF1493', '#FF69B4'];
+            const confettiCount = 200;
+            
+            for (let i = 0; i < confettiCount; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti-piece';
+                    
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.width = Math.random() * 15 + 5 + 'px';
+                    confetti.style.height = confetti.style.width;
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    confetti.style.animationDuration = Math.random() * 2 + 2 + 's';
+                    confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                    
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 4000);
+                }, i * 15);
+            }
+        }
+
+        // Create sparkle effects
+        function createSparkles() {
+            const sparkleSymbols = ['✨', '⭐', '💫', '🌟'];
+            
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle';
+                    sparkle.textContent = sparkleSymbols[Math.floor(Math.random() * sparkleSymbols.length)];
+                    sparkle.style.left = Math.random() * 100 + '%';
+                    sparkle.style.top = Math.random() * 100 + '%';
+                    sparkle.style.fontSize = Math.random() * 30 + 20 + 'px';
+                    
+                    document.body.appendChild(sparkle);
+                    
+                    setTimeout(() => sparkle.remove(), 2000);
+                }, i * 100);
+            }
+        }
+
+        // Initialize
+        window.addEventListener('load', () => {
+            createFloatingHearts();
+            
+            // Position NO button initially
+            const noBtn = document.getElementById('noBtn');
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = '0px';
+            noBtn.style.top = '0px';
+        });
+
+        // Add interactive cursor sparkles
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.95) {
+                const sparkle = document.createElement('div');
+                sparkle.textContent = '✨';
+                sparkle.style.position = 'fixed';
+                sparkle.style.left = e.pageX + 'px';
+                sparkle.style.top = e.pageY + 'px';
+                sparkle.style.pointerEvents = 'none';
+                sparkle.style.fontSize = '20px';
+                sparkle.style.animation = 'sparkleFloat 1s ease-out forwards';
+                sparkle.style.zIndex = '9999';
+                
+                document.body.appendChild(sparkle);
+                setTimeout(() => sparkle.remove(), 1000);
+            }
+        });
+    </script>
+</body>
+</html>
